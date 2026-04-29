@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    
+    <script type="text/babel">
+    
+    // function name must be CamelCase so react can understand it as a HTML element
+    //1st Component Chat Input
+     function ChatInput(){
+      return(
+        <>
+          <input 
+            placeholder="Send a message to Chatbot" 
+            size = "30" />
+            <button>Send</button>
+        </>
+      );
+     }
+
+     //2nd Component Chat Message that 
+     function ChatMessage({message, sender}){
+        // const {message} = props;
+        // const {sender} = props;
+        // const {message, sender} = props;
+      /*
+      if (sender == "robot"){
+        
+          return(
+                <div>
+                  <img src= "robot.png" width = "50px" />
+                  {message}
+                </div>
+              );
+      }
+              */
+
+        return(
+                      //&& value of left is true then the value in the right will happen
+                      // shortcut for if statement
+                <div>
+                  {sender === 'robot' && (
+                    <img src= "robot.png" width = "50px" />
+                  )}  
+                  {message}
+                  {sender == "user" && (
+                    <img src= "user.png" width = "50px" />
+                  )}
+                </div>
+              );
+     
+
+    
+     }
+      //Main App
+     // <> =  a fragment to not duplicate <div>
+    // by creating a function it also create a html element
+    //use a componenet App to create the website
+     function App (){
+      return(
+       <> 
+          <ChatInput/>
+          <ChatMessage 
+            message = "hello chatbot" 
+            sender = "user"
+          />
+
+          <ChatMessage 
+            message = "Hello! How can I help you?"  
+            sender = "robot"
+            />
+
+          <ChatMessage 
+            message = "Can you give me today's date?" 
+            sender = "user"
+          />
+          <ChatMessage 
+            message = "Today is April 28, 2026" 
+            sender = "robot"/>
+        </>
+
+      );
+     }
+  
+      const container = document.querySelector('.js-container');// selecting a container like a body for the app
+      ReactDOM.createRoot(container).render(<App></App>);// renders the dom using React tools
+      
+
+
+    </script>
+  </body>
+</html>
