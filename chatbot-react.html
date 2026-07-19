@@ -65,6 +65,33 @@
     // by creating a function it also create a html element
     //use a componenet App to create the website
      function App (){
+
+      const chatMessages =[{
+        message: 'hello chatbot',
+        sender: "user"
+      },
+    {
+      message:"Hello! How can I help you?",
+      sender: "robot"
+    },
+    {
+      message:"Can you give me today's date?",
+      sender: "user"
+    },
+    {
+      message:"Today is April 28, 2026",
+      sender:"robot"
+    }];
+
+    chatMessages.map((chatMessage)=>{
+      return (
+        <ChatMessage
+          message={chatMessage.message}
+          sender ={chatMessage.sender}
+        />
+      )
+    });
+
       return(
        <> 
           <ChatInput/>
